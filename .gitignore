@@ -16,3 +16,6 @@ __pycache__/
 # Runtime state
 .memory/
 *.log
+
+# Generated lesson pages (mirrored to Claude Artifacts, not tracked here)
+lessons/

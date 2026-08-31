@@ -1,0 +1,11 @@
+{
+  "name": "learn-visual-tools",
+  "version": "0.1.0",
+  "description": "Renders Mermaid and SVG source to PNG for the mermaid-maker and svg-maker subagents, via headless Chrome (puppeteer-core, no bundled browser download).",
+  "type": "module",
+  "private": true,
+  "dependencies": {
+    "mermaid": "^11.4.2",
+    "puppeteer-core": "^23.0.0"
+  }
+}
