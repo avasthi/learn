@@ -19,7 +19,7 @@ Originally created by [Amos Blomqvist](https://github.com/amosblomqvist/learn) a
 Copy `.claude/` into the project where you want to learn:
 
 ```bash
-git clone https://github.com/amosblomqvist/learn
+git clone https://github.com/avasthi/learn
 cp -r learn/.claude your-learning-project/.claude
 cd your-learning-project/.claude/tools
 npm install
