@@ -141,20 +141,60 @@ A good plan is what makes the teaching feel inevitable instead of arbitrary.
 
 ### Phase 3 — Teach (the loop)
 
-Build their dependency graph one **node** at a time — and every node gets the same treatment, whether it's a foundational unconditional truth or a derived step. There is almost never just one; most topics need several, and each new one goes through the loop exactly like any other node:
+Build their dependency graph one **node** at a time — and every node gets the same treatment, whether it's a foundational unconditional truth or a derived step. There is almost never just one; most topics need several, and each new one goes through the loop exactly like any other node.
+
+**The default failure is under-explaining, not over-explaining.** This is worth stating plainly because the instinct runs the other way: compression feels like respect for the learner's time. It isn't. By the time they say "explain that in more detail," you have usually already built two more nodes on top of the one that didn't land, and all three have to come down. A learner who has to ask has already lost the thread — so the asking is a lagging indicator, and you cannot pace by it. Assume you are being too terse and spend the words.
+
+Two gates come before the loop. Both exist because the loop's own checks cannot catch what they catch.
+
+#### Gate A — the vocabulary ledger
+
+Keep an explicit list of every term the learner has **earned**: either confirmed known in Phase 1a, or derived earlier in this lesson. Before sending any message, scan your own draft against it. Every term not on the ledger is either derived right now or cut.
+
+This is not fussiness. **A fact stated in unknown words cannot be judged true or false at all** — so Principle i's "does this land as unconditionally true?" test doesn't fail loudly, it fails *silently*. The learner reads a sentence, extracts nothing, and has no way to tell you which word did it. You then build on a node that was never established.
+
+A term is **derived** when the learner could have produced it from something already standing. Defining it does not count — a definition hands them one more lonely fact, which is exactly what this whole skill exists to avoid. Derive it or don't use it.
+
+Add a term to the ledger only after a quiz-check confirms it, not when you first explain it.
+
+Two classes slip past most often, so check for them by name:
+- **Words that look like plain English** — *wire, thread, page, word, socket, stream, buffer, block*. They read as if they need no explanation. They are the ones that silently carry a technical meaning the learner does not have.
+- **Words that are compressed descriptions** — *lost wakeup, back-pressure, conflation, head-of-line blocking*. Each packs a whole mechanism into a noun. Using one before its mechanism is established teaches the label instead of the thing.
+
+#### Gate B — name the cast
+
+When the topic has several actors doing the same kind of thing in different ways, produce the **full roster first** — who each one is, what it does, which variant it uses — and confirm it, before explaining any single variant.
+
+Without the roster, every mechanism you explain lands unplaced. The learner can follow each one individually and still have no idea which applies where, because you have given them a pile of mechanisms and no map from mechanism to actor. Their symptom is specific and recognisable: *"you're talking about all kinds of mechanisms without explaining which is used where."*
+
+The roster is itself a node: motivate it, establish it, confirm it. It is usually a table. It must be **exhaustive** — a roster missing two rows is worse than no roster, because the learner will reasonably assume the pattern it shows is the whole pattern, and every later exception will read as a contradiction.
+
+Best of all, the roster usually *is* the insight. "Seven consumers, five strategies, and one question decides which" is a better thing to hold than any one of the five.
+
+#### The loop
 
 For **every node** (each unconditional truth *and* each non-trivial reasoning step toward the goal), run:
 
 1. **Motivate.** Frame why we need this node right now — what problem it solves or what gap it closes. This applies to unconditional truths too: don't just assert one because it's true, motivate why *this* truth, *now*. "Why are we even bringing this in?"
-2. **Establish.**
+2. **Ground before generalising.** If the node is a rule about state, timing, ordering or cost, give a **worked example with concrete numbers first**, then state the rule. Never the other way round. A rule stated abstractly and then illustrated is a rule the learner has already failed to parse once — the example now has to undo a wrong reading as well as build the right one. Make up specific values, walk them through, and let the general statement fall out at the end as a summary of what they just watched happen.
+3. **Establish.**
    - If it's a foundational unconditional truth: state it plainly, at face value, no caveats. Surface an atomic unit if one fits.
    - If it's a derived step: build it up from what's already established via a motivated move (Socratic or expository), answering "how could I have discovered this?" When a Socratic step has a gradable right/wrong answer, pose it with quiz even though they're "attempting the discovery" — gradable-and-Socratic is normal, not a contradiction; only fall back to ask_user_question if there's genuinely no right answer.
-3. **Connect.** Make the dependency edge explicit — show exactly how this new node hangs off the ones already in place, so it's understood, not memorized.
-4. **Quiz-check.** Confirm the node actually landed with a quick quiz — this applies to foundations just as much as derived steps. An unconfirmed unconditional truth is exactly as dangerous as an unconfirmed derived fact: if they miss it, that node isn't solid, so stop and fix it before building anything on top of it.
+4. **Connect.** Make the dependency edge explicit — show exactly how this new node hangs off the ones already in place, so it's understood, not memorized.
+5. **State quantities precisely.** A claim can be perfectly *true* and still install a false model, so this is a separate obligation from the accuracy check the `researcher` gives you.
+   - Naming a **cost** requires naming which component of it — a fixed overhead and the variable work it wraps are different numbers, and a learner told only the total will generalise from the wrong one.
+   - Naming a **duration** requires saying whether it is a ceiling or an elapsed time. "Waits 100 ms" and "waits up to 100 ms, usually none" describe opposite behaviours.
+   - Naming a **resource** requires saying which one. Two things can both be "busy" while competing for entirely different scarcities, and a learner who merges them will derive a contradiction and believe you got it wrong.
+6. **Quiz-check.** Confirm the node actually landed with a quick quiz — this applies to foundations just as much as derived steps. An unconfirmed unconditional truth is exactly as dangerous as an unconfirmed derived fact: if they miss it, that node isn't solid, so stop and fix it before building anything on top of it.
+   **A dismissed check is not a skipped check.** An engaged learner will interrupt a quiz to ask something — that is the material working, not friction. Answer what they asked, then put the same check back up. And expect questions *inside* a beat, not only at its end: an interrupting question is a free probe result, so read what it reveals about the edge before you answer it.
 
-Repeat this full loop per node — don't front-load all the foundations once at the start and then stop checking. Any time a new unconditional truth is needed mid-session, it goes through motivate → establish → connect → quiz-check just like a derived step would.
+Repeat this full loop per node — don't front-load all the foundations once at the start and then stop checking. Any time a new unconditional truth is needed mid-session, it goes through the whole loop just like a derived step would.
 
 If you catch yourself asserting a fact they'd have to take on faith — foundational or not — stop: either motivate it and confirm it lands, or ground it in something already established. Unmotivated, unconfirmed facts don't lock in — that's the whole point.
+
+**Re-probe at every part boundary.** The edge you mapped in Phase 1a was the edge *then*. Teaching moves it, and moves it unevenly — some strands advance several levels while others don't move at all. A lesson of any length that probes only once is navigating by a stale map, and the failure is silent until the learner finally says they are lost. Before starting each new part, re-locate the edge for the strands that part depends on, using Phase 1a's bracketing procedure: something they get right, something they get wrong.
+
+**Repairing a wrong answer beats adding a node.** When new material explains something they got wrong earlier in the session, say so explicitly and join the two: *"you answered X; X is wrong as an answer, but it names this real thing, which you were reaching for."* This lands harder than a fresh node, because it does two jobs at once — it installs the new node and removes a wrong one that would have kept generating errors. Watch for these deliberately; they are the highest-value moves available and they are easy to walk past.
 
 ## The lesson page
 
