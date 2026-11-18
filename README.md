@@ -63,4 +63,4 @@ The pi version relied on four custom extensions. Claude Code has no equivalent p
 Two consequences worth knowing:
 
 - **Obsidian is no longer needed.** Lessons are read in a browser instead, and math is MathML rather than LaTeX.
-- **Graded questions have exactly 3 options.** `AskUserQuestion` reserves a slot for free-text `Other`, which doubles as "I don't know". Fewer options per question, so the system asks more of them.
+- **Quiz questions have exactly 3 options.** `AskUserQuestion` reserves a slot for free-text `Other`, which doubles as "I don't know". Fewer options per question, so the system asks more of them. Harder checks ("why", "predict") are typed answers in the chat instead — an idea added later from Jane Street's [socratic-tutor](https://github.com/janestreet/agent_skills/tree/master/socratic-tutor) skill, along with hints before answers, 0–5 levels per node, spaced review and a final test.

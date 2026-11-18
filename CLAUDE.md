@@ -47,7 +47,7 @@ lessons/                    generated lesson pages (gitignored)
 
 - **Facts it isn't certain of** → `researcher` subagent, before saying them aloud. The skill treats an unverified claim as worse than a slow answer, because a wrong foundation corrupts every node built on it.
 - **Diagrams** → `visualize` skill, which dispatches a `mermaid-maker` or `svg-maker` subagent.
-- **Questions** → `AskUserQuestion`.
+- **Questions** → `AskUserQuestion` (quizzes and open choices), or a plain-text question as the last line of a turn when the learner must produce an answer in their own words ("typed mode").
 - **The readable lesson** → an `Artifact`.
 
 Both maker subagents follow the same loop: write source → render to PNG → `Read` the PNG to actually look at it → iterate → return **source text**, never an image. Source is what ships because the lesson page renders Mermaid and inline SVG natively, keeping the page self-contained.
@@ -56,8 +56,8 @@ Both maker subagents follow the same loop: write source → render to PNG → `R
 
 These are load-bearing, and each replaces something the deleted pi extensions used to enforce in code:
 
-1. **Graded questions get exactly 3 real options — never 4.** `AskUserQuestion` appends its own free-text `Other` entry, and a 4th real option silently destroys it. `Other` is also the learner's only way to say "I don't know", which the system treats as a valuable located gap rather than a wrong answer. A 4th option therefore removes both the escape hatch and an honest-uncertainty signal at once.
-2. **The main session grades its own questions.** There is no grading tool, so the skill's guards (rotate the correct slot; state the correct option verbatim before the verdict) are the only checks that exist. They read like style advice and are not.
+1. **Quiz questions get exactly 3 real options — never 4.** `AskUserQuestion` appends its own free-text `Other` entry, and a 4th real option silently destroys it. `Other` is also the learner's only way to say "I don't know", which the system treats as a valuable located gap rather than a wrong answer. A 4th option therefore removes both the escape hatch and an honest-uncertainty signal at once.
+2. **The main session grades its own questions.** There is no grading tool, so the skill's guards are the only checks that exist: rotate the correct slot; quote the learner's pick verbatim before the verdict, and the correct option verbatim before revealing it; for a typed answer, write the one-sentence model answer before the verdict. They read like style advice and are not. The hint ladder (a wrong answer gets a narrower question, not the answer, for up to two hints) makes the pick-quoting guard matter more: the correct option may not be revealed for several turns, so quoting what they picked is the only immediate sign of a misgrade.
 3. **A lesson page's Artifact URL must be carried across sessions.** Re-publishing the same file path holds the URL only *within* one session. Because lessons legitimately span days, each page stores its own URL in an HTML comment in `<head>`, and later publishes must pass it as the tool's `url`. Skip this and the learner silently gets a second, divergent page.
 
 ### Diagram scratch files
